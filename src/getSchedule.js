@@ -16,7 +16,5 @@ function getSchedule(scheduleTarget) {
     return schedule[scheduleTarget] ? { [scheduleTarget]: schedule[scheduleTarget] } : schedule;
   }
 }
-const actual = getSchedule('lions');
-console.log(actual);
 
 module.exports = getSchedule;

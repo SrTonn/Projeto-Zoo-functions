@@ -18,13 +18,5 @@ function getEmployeesCoverage(options) {
   if (!found) throw new Error('Informações inválidas');
   return found;
 }
-const actual = getEmployeesCoverage({ name: 'Spry' });
-console.log('actual=>', actual);
 
-// const expected = {
-//   id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad',
-//   fullName: 'Sharonda Spry',
-//   species: [ 'otters', 'frogs' ],
-//   locations: [ 'SE', 'SW' ],
-// };
 module.exports = getEmployeesCoverage;

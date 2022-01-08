@@ -5,7 +5,5 @@ function getEmployeeByName(employeeName) {
     [firstName, lastName].includes(employeeName));
   return found || {};
 }
-const actual = getEmployeeByName('Emery');
-console.log(actual);
 
 module.exports = getEmployeeByName;
