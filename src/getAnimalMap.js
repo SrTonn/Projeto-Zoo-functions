@@ -9,7 +9,7 @@ function setOptions(residents, options) {
 }
 
 function getAnimalMap(options) {
-  const animalMap = species.reduce((acc, { name, location, residents }) => {
+  return species.reduce((acc, { name, location, residents }) => {
     if (!options || !options.includeNames) {
       return { ...acc, [location]: [...acc[location] || '', name] };
     }
@@ -20,8 +20,6 @@ function getAnimalMap(options) {
         [name]: residentsList,
       }] };
   }, {});
-
-  return animalMap;
 }
 
 module.exports = getAnimalMap;
