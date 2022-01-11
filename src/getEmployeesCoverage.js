@@ -1,22 +1,20 @@
 const { species, employees } = require('../data/zoo_data');
 
-function getLocationAndSpeciesName(array, key) {
-  return species.reduce((acc, obj) =>
-    (array.includes(obj.id) ? [...acc, obj[key]] : acc), []);
-}
+const getLocationAndSpeciesName = (array, key) => species.reduce((acc, obj) =>
+  (array.includes(obj.id) ? [...acc, obj[key]] : acc), []);
 
-function getEmployeesCoverage(options) {
+const getEmployeesCoverage = (options) => {
   const value = options && Object.values(options)[0];
-  const list = employees.reduce((acc, val) => [...acc, {
-    id: val.id,
-    fullName: `${val.firstName} ${val.lastName}`,
-    species: getLocationAndSpeciesName(val.responsibleFor, 'name'),
-    locations: getLocationAndSpeciesName(val.responsibleFor, 'location'),
+  const list = employees.reduce((acc, obj) => [...acc, {
+    id: obj.id,
+    fullName: `${obj.firstName} ${obj.lastName}`,
+    species: getLocationAndSpeciesName(obj.responsibleFor, 'name'),
+    locations: getLocationAndSpeciesName(obj.responsibleFor, 'location'),
   }], []);
-  const found = options ? list.find((val) =>
-    val.fullName.includes(value) || val.id === value) : list;
+  const found = options ? list.find(({ fullName, id }) =>
+    fullName.includes(value) || id === value) : list;
   if (!found) throw new Error('Informações inválidas');
   return found;
-}
+};
 
 module.exports = getEmployeesCoverage;
